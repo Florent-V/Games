@@ -1,0 +1,91 @@
+/* Scoped styles for the 2048 game */
+.game-2048-container {
+  --grid-size: 4;
+  --board-size: 500px;
+  --tile-gap: 16px;
+  --tile-size: calc((var(--board-size) - var(--tile-gap) * (var(--grid-size) + 1)) / var(--grid-size));
+  --border-radius: 6px;
+  --anim-duration: 180ms;
+}
+
+@media (max-width: 520px) {
+  .game-2048-container {
+    --board-size: calc(100vw - 32px);
+  }
+}
+
+.game-2048-container .score-box {
+  @apply bg-gray-200 p-3 rounded-md text-center flex flex-col;
+  min-width: 90px;
+}
+
+.game-2048-container .game-board {
+  @apply relative bg-gray-300 p-4 rounded-md grid gap-4;
+  width: var(--board-size);
+  height: var(--board-size);
+  grid-template-columns: repeat(var(--grid-size), 1fr);
+  grid-template-rows: repeat(var(--grid-size), 1fr);
+}
+
+.game-2048-container .grid-cell {
+  @apply bg-gray-400/50 rounded;
+  width: var(--tile-size);
+  height: var(--tile-size);
+}
+
+.game-2048-container .game-over-overlay {
+  @apply absolute inset-0 bg-white/70 flex flex-col items-center justify-center rounded-md;
+  backdrop-filter: blur(2px);
+}
+
+.game-2048-container .tile {
+  @apply absolute flex items-center justify-center font-bold text-2xl text-gray-800 rounded;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  --x-from: calc(var(--from-col) * (var(--tile-size) + var(--tile-gap)) + var(--tile-gap));
+  --y-from: calc(var(--from-row) * (var(--tile-size) + var(--tile-gap)) + var(--tile-gap));
+  --x-to: calc(var(--to-col) * (var(--tile-size) + var(--tile-gap)) + var(--tile-gap));
+  --y-to: calc(var(--to-row) * (var(--tile-size) + var(--tile-gap)) + var(--tile-gap));
+  transform: translate(var(--x-from), var(--y-from));
+  transition: transform var(--anim-duration) ease;
+}
+
+.game-2048-container .tile-inner {
+  @apply w-full h-full flex items-center justify-center;
+  border-radius: inherit;
+}
+
+.game-2048-container .tile.new .tile-inner {
+  animation: spawn var(--anim-duration) ease;
+}
+
+.game-2048-container .tile.merged .tile-inner {
+  animation: pop calc(var(--anim-duration) * 1.2) ease;
+}
+
+.game-2048-container .tile:not(.new) {
+  transform: translate(var(--x-to), var(--y-to));
+}
+
+@keyframes spawn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.game-2048-container .tile-2 { background-color: #eee4da; color: #776e65; }
+.game-2048-container .tile-4 { background-color: #ede0c8; color: #776e65; }
+.game-2048-container .tile-8 { background-color: #f2b179; color: #f9f6f2; }
+.game-2048-container .tile-16 { background-color: #f59563; color: #f9f6f2; }
+.game-2048-container .tile-32 { background-color: #f67c5f; color: #f9f6f2; }
+.game-2048-container .tile-64 { background-color: #f65e3b; color: #f9f6f2; }
+.game-2048-container .tile-128 { background-color: #edcf72; color: #f9f6f2; font-size: 2.25rem; }
+.game-2048-container .tile-256 { background-color: #edcc61; color: #f9f6f2; font-size: 2.25rem; }
+.game-2048-container .tile-512 { background-color: #edc850; color: #f9f6f2; font-size: 2.25rem; }
+.game-2048-container .tile-1024 { background-color: #edc53f; color: #f9f6f2; font-size: 1.75rem; }
+.game-2048-container .tile-2048 { background-color: #edc22e; color: #f9f6f2; font-size: 1.75rem; }

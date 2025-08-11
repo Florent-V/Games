@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import './base.css';
+@import "../game/game-2048.css"; /* Import game-specific styles */
+
+@plugin "daisyui" {
+  themes: all;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
