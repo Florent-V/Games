@@ -1,6 +1,6 @@
 // src/game/composables/useInputHandler.ts
 import { onMounted, onBeforeUnmount } from 'vue';
-import type { Direction } from '@/game/types';
+import type { Direction } from '@/games/2048/types';
 
 export function useInputHandler(options: {
   onMove: (dir: Direction) => void;

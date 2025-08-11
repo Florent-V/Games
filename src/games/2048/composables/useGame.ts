@@ -1,10 +1,10 @@
 // src/game/composables/useGame.ts
 import { ref, readonly, computed, watch } from 'vue';
-import type { Direction } from '@/game/types';
-import { useInputHandler } from './useInputHandler';
-import { ANIMATION_DURATION } from '@/game/constants';
-import { saveGameState, loadGameState, clearGameState, saveBestScore, loadBestScore } from './usePersistence';
-import { Grid } from '@/game/state/Grid.ts'
+import type { Direction } from '@/games/2048/types';
+import { useInputHandler } from './useInputHandler.ts';
+import { ANIMATION_DURATION } from '@/games/2048/constants';
+import { saveGameState, loadGameState, clearGameState, saveBestScore, loadBestScore } from './usePersistence.ts';
+import { Grid } from '@/games/2048/state/Grid.ts'
 
 const grid = new Grid();
 const score = ref(0);

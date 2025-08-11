@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Tile } from '@/game/state/Tile.ts';
+import type { Tile } from '@/games/2048/state/Tile.ts';
 import GameTile from './GameTile.vue';
-import { TILE_COUNT } from '@/game/constants';
+import { TILE_COUNT } from '@/games/2048/constants';
 
 defineProps<{ tiles: Tile[] }>();
 
