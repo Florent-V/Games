@@ -80,7 +80,6 @@ onMounted(() => {
 
 // Re-draw whenever the game state changes
 watch([() => props.snakeBody, () => props.food], draw, { deep: true });
-
 </script>
 
 <template>

@@ -6,14 +6,15 @@ const props = defineProps<{ tile: Tile }>();
 
 const positionStyle = computed(() => {
   const to = { row: props.tile.row, col: props.tile.col };
-  const from = props.tile.prevRow !== undefined ? { row: props.tile.prevRow, col: props.tile.prevCol } : to;
+  const from =
+    props.tile.prevRow !== undefined ? { row: props.tile.prevRow, col: props.tile.prevCol } : to;
 
   return {
     '--from-row': from.row,
     '--from-col': from.col,
     '--to-row': to.row,
     '--to-col': to.col,
-    'zIndex': props.tile.merged ? 10 : 1,
+    zIndex: props.tile.merged ? 10 : 1,
   };
 });
 
@@ -26,11 +27,10 @@ const tileClass = computed(() => {
   classes[`tile-${val <= 2048 ? val : 2048}`] = true;
   return classes;
 });
-
 </script>
 
 <template>
-  <div class="tile" :class="tileClass" :style="positionStyle">
+  <div class="tile font-bold text-2xl" :class="tileClass" :style="positionStyle">
     <div class="tile-inner">{{ tile.value }}</div>
   </div>
 </template>

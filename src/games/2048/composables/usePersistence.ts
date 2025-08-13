@@ -19,7 +19,7 @@ export function loadGameState(): GameState | null {
   try {
     return JSON.parse(savedState) as GameState;
   } catch (e) {
-    console.error("Failed to parse saved game state.", e);
+    console.error('Failed to parse saved game state.', e);
     return null;
   }
 }

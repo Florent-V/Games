@@ -17,7 +17,7 @@ export function useSnakeGame() {
 
   // Function to sync the reactive state with the engine state
   const syncState = () => {
-    snakeBody.value = [...gameEngine.snake.body.map(segment => ({ ...segment }))];
+    snakeBody.value = [...gameEngine.snake.body.map((segment) => ({ ...segment }))];
     food.value = { ...gameEngine.food };
     score.value = gameEngine.score;
     isGameOver.value = gameEngine.isGameOver;

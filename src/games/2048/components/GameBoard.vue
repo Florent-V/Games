@@ -5,9 +5,11 @@ import { TILE_COUNT } from '@/games/2048/constants';
 
 defineProps<{ tiles: Tile[] }>();
 
-const emit = defineEmits<{ (e: 'move', dir: 'up'|'down'|'left'|'right'): void }>();
+const emit = defineEmits<{ (e: 'move', dir: 'up' | 'down' | 'left' | 'right'): void }>();
 
-let startX = 0, startY = 0, moved = false;
+let startX = 0,
+  startY = 0,
+  moved = false;
 
 function onTouchStart(e: TouchEvent) {
   const t = e.touches[0];
@@ -25,7 +27,8 @@ function onTouchEnd(e: TouchEvent) {
   const t = e.changedTouches[0];
   const dx = t.clientX - startX;
   const dy = t.clientY - startY;
-  const absX = Math.abs(dx), absY = Math.abs(dy);
+  const absX = Math.abs(dx),
+    absY = Math.abs(dy);
   if (Math.max(absX, absY) < 30) return;
 
   if (absX > absY) {

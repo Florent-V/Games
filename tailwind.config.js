@@ -1,4 +1,5 @@
 import daisyui from 'daisyui';
+import typography from '@tailwindcss/typography';
 
 module.exports = {
   content: [
@@ -8,5 +9,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [daisyui],
+  plugins: [daisyui, typography],
 }
