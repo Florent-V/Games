@@ -20,6 +20,11 @@ const router = createRouter({
       path: '/game/snake',
       name: 'game-snake',
       component: SnakeView
+    },
+    {
+      path: '/game/tetris',
+      name: 'game-tetris',
+      component: SnakeView
     }
   ]
 })
