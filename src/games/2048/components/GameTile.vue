@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Tile } from '@/game/state/Tile.ts';
+import { Tile } from '@/games/2048/state/Tile.ts';
 
 const props = defineProps<{ tile: Tile }>();
 

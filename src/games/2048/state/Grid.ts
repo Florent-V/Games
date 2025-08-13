@@ -1,8 +1,8 @@
 // src/game/state/grid.ts
 import { reactive } from 'vue';
-import { GRID_SIZE } from '@/game/constants';
-import type { Direction } from '@/game/types';
-import { Tile } from '@/game/state/Tile.ts';
+import { GRID_SIZE } from '@/games/2048/constants';
+import type { Direction } from '@/games/2048/types';
+import { Tile } from '@/games/2048/state/Tile.ts';
 
 export class Grid {
   tiles: Tile[] = reactive([]);

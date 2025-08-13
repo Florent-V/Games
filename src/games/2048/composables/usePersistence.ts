@@ -1,5 +1,5 @@
 // src/game/composables/usePersistence.ts
-import type { Tile } from '@/game/state/Tile.ts';
+import type { Tile } from '@/games/2048/state/Tile.ts';
 
 const GAME_STATE_KEY = '2048-game-state';
 const BEST_SCORE_KEY = '2048-best-score';

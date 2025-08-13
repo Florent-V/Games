@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import GameBoard from '@/game/components/GameBoard.vue';
-import { useGame } from '@/game/composables/useGame';
+import GameBoard from '@/games/2048/components/GameBoard.vue';
+import { useGame } from '@/games/2048/composables/useGame';
 
 const { tiles, score, isGameOver, restart, move, bestScore } = useGame();
 </script>

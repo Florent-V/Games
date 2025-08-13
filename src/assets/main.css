@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import './base.css';
-@import "../game/game-2048.css"; /* Import game-specific styles */
+@import "../games/2048/game-2048.css"; /* Import game-specific styles */
 
 @plugin "daisyui" {
   themes: all;
