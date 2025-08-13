@@ -42,7 +42,11 @@ export class GameEngine {
         x: Math.floor(Math.random() * BOARD_SIZE),
         y: Math.floor(Math.random() * BOARD_SIZE),
       };
-    } while (this.snake.body.some(segment => segment.x === foodPosition.x && segment.y === foodPosition.y));
+    } while (
+      this.snake.body.some(
+        (segment) => segment.x === foodPosition.x && segment.y === foodPosition.y
+      )
+    );
     return foodPosition;
   }
 }

@@ -28,7 +28,10 @@ export class Snake {
 
   changeDirection(newDirection: Direction) {
     // The next direction is the last one in the queue, or the current one if queue is empty
-    const nextDirection = this.directionQueue.length > 0 ? this.directionQueue[this.directionQueue.length - 1] : this.direction;
+    const nextDirection =
+      this.directionQueue.length > 0
+        ? this.directionQueue[this.directionQueue.length - 1]
+        : this.direction;
 
     // Prevent adding an immediate 180-degree turn to the queue
     if (
@@ -53,10 +56,18 @@ export class Snake {
 
     const newHead = { ...this.head };
     switch (this.direction) {
-      case 'Up': newHead.y--; break;
-      case 'Down': newHead.y++; break;
-      case 'Left': newHead.x--; break;
-      case 'Right': newHead.x++; break;
+      case 'Up':
+        newHead.y--;
+        break;
+      case 'Down':
+        newHead.y++;
+        break;
+      case 'Left':
+        newHead.x--;
+        break;
+      case 'Right':
+        newHead.x++;
+        break;
     }
 
     this.body.unshift(newHead); // Add new head
@@ -71,7 +82,7 @@ export class Snake {
 
   checkSelfCollision(): boolean {
     const [head, ...body] = this.body;
-    return body.some(segment => segment.x === head.x && segment.y === head.y);
+    return body.some((segment) => segment.x === head.x && segment.y === head.y);
   }
 
   checkWallCollision(): boolean {

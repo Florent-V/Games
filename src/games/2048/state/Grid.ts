@@ -21,15 +21,15 @@ export class Grid {
 
   loadState(tiles: Tile[]) {
     this.tiles.length = 0;
-    const newTiles = tiles.map(t => new Tile(t.row, t.col, t.value));
+    const newTiles = tiles.map((t) => new Tile(t.row, t.col, t.value));
     this.tiles.push(...newTiles);
     // Ensure next ID is greater than any loaded ID
-    Tile.nextId = Math.max(...this.tiles.map(t => t.id)) + 1;
+    Tile.nextId = Math.max(...this.tiles.map((t) => t.id)) + 1;
   }
 
   spawnRandomTile() {
     const available = this.availableCells();
-    console.log("available", available);
+    console.log('available', available);
     if (available.length > 0) {
       const { row, col } = available[Math.floor(Math.random() * available.length)];
       this.tiles.push(new Tile(row, col));
@@ -38,7 +38,7 @@ export class Grid {
 
   availableCells(): { row: number; col: number }[] {
     const cells: { row: number; col: number }[] = [];
-    const used = new Set(this.tiles.map(t => `${t.row}:${t.col}`));
+    const used = new Set(this.tiles.map((t) => `${t.row}:${t.col}`));
     for (let r = 0; r < this.size; r++) {
       for (let c = 0; c < this.size; c++) {
         if (!used.has(`${r}:${c}`)) {
@@ -57,8 +57,8 @@ export class Grid {
     let moved = false;
     let score = 0;
 
-    traversals.x.forEach(x => {
-      traversals.y.forEach(y => {
+    traversals.x.forEach((x) => {
+      traversals.y.forEach((y) => {
         const row = dir === 'up' || dir === 'down' ? y : x;
         const col = dir === 'left' || dir === 'right' ? y : x;
         const tile = this.getTileAt(row, col);
@@ -89,7 +89,7 @@ export class Grid {
   }
 
   finalizeMove() {
-    this.tiles.forEach(t => {
+    this.tiles.forEach((t) => {
       t.merged = false;
       t.mergedFrom = undefined;
     });
@@ -101,7 +101,7 @@ export class Grid {
       if (tile.merged) {
         tile.value *= 2; // Update value here, at the end of the animation
         if (tile.mergedFrom) {
-          tile.mergedFrom.forEach(source => idsToRemove.add(source.id));
+          tile.mergedFrom.forEach((source) => idsToRemove.add(source.id));
         }
       }
     }
@@ -114,7 +114,7 @@ export class Grid {
   }
 
   private prepareForMove() {
-    this.tiles.forEach(t => {
+    this.tiles.forEach((t) => {
       t.prevRow = t.row;
       t.prevCol = t.col;
       t.merged = false;
@@ -123,7 +123,7 @@ export class Grid {
   }
 
   private getTileAt(row: number, col: number): Tile | undefined {
-    return this.tiles.find(t => t.row === row && t.col === col);
+    return this.tiles.find((t) => t.row === row && t.col === col);
   }
 
   private moveTile(tile: Tile, row: number, col: number) {
@@ -159,7 +159,10 @@ export class Grid {
     return traversals;
   }
 
-  private findFarthestPosition(tile: Tile, vector: { x: number; y: number }): { farthest: { row: number; col: number }; next: Tile | undefined } {
+  private findFarthestPosition(
+    tile: Tile,
+    vector: { x: number; y: number }
+  ): { farthest: { row: number; col: number }; next: Tile | undefined } {
     let current = { row: tile.row, col: tile.col };
     let farthest = { ...current };
     let nextPos;

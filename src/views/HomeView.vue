@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
 import { RouterLink } from 'vue-router';
-import Game2048Icon from '@/components/Game2048Icon.vue'
+import Game2048Icon from '@/components/Game2048Icon.vue';
 import SnakeIcon from '@/components/SnakeIcon.vue';
 import TetrisIcon from '@/components/TetrisIcon.vue';
 
@@ -10,23 +10,22 @@ const games = shallowRef([
     name: '2048',
     description: 'Faites glisser les tuiles pour fusionner les nombres et atteindre 2048.',
     routeName: 'game-2048',
-    icon: Game2048Icon
+    icon: Game2048Icon,
   },
   {
     name: 'Snake',
     description: 'Mangez la nourriture, grandissez, mais ne vous mordez pas la queue !',
     routeName: 'game-snake',
-    icon: SnakeIcon
+    icon: SnakeIcon,
   },
   {
     name: 'Tetris',
     description: 'Empilez les blocs pour compléter des lignes et marquer des points.',
     routeName: 'game-tetris',
     icon: TetrisIcon,
-    disabled: true
+    disabled: true,
   },
 ]);
-
 </script>
 
 <template>
@@ -44,7 +43,10 @@ const games = shallowRef([
           :to="{ name: game.routeName }"
           :class="[
             'card bg-base-100 shadow-lg transition-shadow duration-300 ease-in-out',
-            { 'hover:shadow-2xl transform hover:-translate-y-1': !game.disabled, 'cursor-not-allowed': game.disabled }
+            {
+              'hover:shadow-2xl transform hover:-translate-y-1': !game.disabled,
+              'cursor-not-allowed': game.disabled,
+            },
           ]"
           :is="game.disabled ? 'div' : 'RouterLink'"
         >
