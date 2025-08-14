@@ -29,7 +29,7 @@ const isGameOver = computed(() => grid.availableCells().length === 0);
 const gameMode = ref<'classic' | 'power-up'>('classic');
 const history = ref<{ tiles: Tile[]; score: number }[]>([]);
 
-const { powerUps, initializePowerUps, checkAll, getPowerUp, resetAll } = usePowerUps(
+const { initializePowerUps, checkAll, getPowerUp } = usePowerUps(
   grid,
   score,
   history
@@ -95,6 +95,15 @@ function move(dir: Direction) {
         checkAll();
       }
 
+      const undoPowerUp = getPowerUp('undo');
+      if (undoPowerUp) {
+        while (history.value.length > undoPowerUp.count.value) {
+          history.value.shift();
+        }
+      } else {
+        history.value = [];
+      }
+
       grid.spawnRandomTile();
       grid.finalizeMove();
       animating.value = false;
@@ -121,7 +130,6 @@ export function useGame() {
     animating: readonly(animating),
     isGameOver: readonly(isGameOver),
     gameMode: readonly(gameMode),
-    powerUps: readonly(powerUps),
     getPowerUp,
     move,
     restart,

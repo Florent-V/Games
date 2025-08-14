@@ -35,7 +35,6 @@ export function usePowerUps(grid: Grid, score: Ref<number>, history: Ref<{ tiles
   }
 
   return {
-    powerUps,
     initializePowerUps,
     checkAll,
     getPowerUp,
